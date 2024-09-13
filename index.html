@@ -1,18 +1,131 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Wladisl4W</title>
-
+    <title>Title</title>
 </head>
 <body>
+    <h1 style="text-align:center;">Это первая и последняя лабораторная работа</h1>
     <ul>
-        <li><a href="http://www.kubsu.ru/">1. Ссылка на сайт КубГУ с http</a></li>
-        <li><a href="https://www.kubsu.ru/">2. Ссылка на сайт КубГУ с https</a></li>
-        <li><a href="https://igroutka.ru/igry-io/17587-slither-io.html"><img src="image.jpg"></a></li>
-        <li><a href="http://www.kubsu.ru/">4. Сокращённая ссылка на внутренную страницу</a></li>
-        <li><a href="http://www.kubsu.ru/">5. Сокращённая ссылка на главную страницу</a></li>
-      </ul>
-    
+        <li><a href="http://kubsu.ru/" id="1">КубГУ</a></li>
+        <li><a href="https://kubsu.ru">КубГУ</a></li>
+        <li><a href="https://kubsu.ru" id="2"><img src="image.jpg" width="30%" height="30%" alt="Здесь картинка"></a></li>
+        <li><a href="/someText.html">Эта страница</a></li>
+        <li><a href="/index.html">Главная страница</a></li>
+        <li><a href="#123123">Jopa</a></li>
+        <li><a id="123154" style="color: #00CC00;font-family:Monotype Corsiva" href="https://www.w3schools.com/html?gde&vlad&kolomiez">HTML</a></li>
+        <li><a id="123153" href="https://www.w3schools.com/html?id=vlad">HTML</a></li>
+        <li><a href="/">Относительная сcылка на текущий каталог</a></li>
+        <li><a href="./about/1.html">Относительная сcылка на каталог about</a></li>
+        <li><a href="../">Относительная сcылка на каталог уровнем выше</a></li>
+        <li><a href="../../">Относительная сcылка на каталог двумя уровнями выше</a></li>
+        <li><p>Здесь абзац, а вот и <a href="http://kubsu.ru">ссылка</a></p></li>
+        <li><a href="https://youtu.be/dQw4w9WgXcQ?si=Gq2ITf9IF59UMiNj">Ссылка на фрагмент страницы стороннего сайта</a></li>
+        <li>
+        <map name="primary">
+            <area shape="circle" coords="75,75,75" href="#1" alt="Круг" />
+            <area shape="rect" coords="150,0,350,150" href="#2" alt="Прямоугольник" />
+        </map>
+        <img usemap="#primary" src="Final.jpg" width="350" height="250" alt="Финал"/>
+        </li>
+        <li><a href="">Ссылка с пустым href</a></li>
+        <li><a>Ссылка без href</a></li>
+        <li><a href="https://kubsu.ru" rel="nofollow">Я вам запрещаю переходить</a></li>
+        <li><!--noindex--><a href="https://kubsu.ru">Я вам валидно запрещаю индексировать</a><!--/noindex--></li>
+        <p1>Топовые персонажи в доте:</p1>
+        <ol reversed="reversed">
+        <li><a title="Снайпер" href="https://kubsu.ru">Снайпер</a><br />
+            <img alt="Красивая фотка со снайпером" src="sniper.png" width="20%" height="20%" />
+        </li>
+        <li>
+            <a title="Тинкер" href="https://kubsu.ru">Тинкер</a><br />
+            <img alt="Красивая фотка с тинкером" src="tinker.png" width="20%" height="20%" />
+        </li>
+        <li>
+            <a title="Пудж" href="https://kubsu.ru">Пудж</a><br />
+            <img alt="Сексуальная фотка с пуджом" src="pudge.png" width="20.3%" height="25%" />
+        </li>
+        </ol>
+                
+        <li><a href="ftp://user:password@example.com/myfile.zip">Скачать без регистрации и СМС</a></li>
+    </ul>
+
+
+
+      <form action="./index.html"
+      method="POST">
+
+      <label>
+        ФИО:<br />
+        <input name="field-name-1"
+          placeholder="Введите ФИО" />
+      </label><br />
+
+      <label>
+        Телефон:<br />
+        <input name="field-phone-number"
+          type="phone-number"
+          placeholder="Введите ваш телефон" />
+      </label><br />
+
+      <label>
+        Введите ваш e-mail:<br />
+        <input name="field-email"
+          type="email-address"
+          placeholder="Введите ваш e-mail" />
+      </label><br />
+
+      <label>
+        Ваша дата рождения:<br />
+        <input name="аfield-date"
+          value="2019-08-13"
+          type="date" />
+      </label><br />
+
+      Укажите ваш пол:<br />
+      <label><input type="radio" checked="checked"
+        name="radio-group-1" value="Значение1" />
+        Мужской</label>
+      <label><input type="radio"
+        name="radio-group-1" value="Значение2" />
+        Женский</label>
+      <label><input type="radio" checked="checked"
+        name="radio-group-1" value="Значение1" />
+        Боевой самолёт СУ-57</label>
+      <label><input type="radio" checked="checked"
+        name="radio-group-1" value="Значение1" />
+        Я по гендеру носок</label><br />
+
+      <label>
+        Любимый язык программирования:
+        <br />
+        <select name="field-name-4[]"
+          multiple="multiple">
+          <option value="Pascal">Pascal</option>
+          <option value="C">C</option>
+          <option value="C++">C++</option>
+          <option value="Python">Python</option>
+          <option value="JavaScript">JavaScript</option>
+          <option value="PHP">PHP</option>
+          <option value="Java">Java</option>
+          <option value="Haskel">Haskel</option>
+          <option value="Clojure">Clojure</option>
+          <option value="Prolog">Prolog</option>
+          <option value="Scala">Scala</option>
+        </select>
+      </label><br />
+
+      <label>
+        Краткая биография:<br />
+        <textarea name="biography-field" placeholder="биография"></textarea>
+      </label><br />
+      
+      <label><input type="checkbox" checked="checked"
+        name="check-1" />
+        С контрактом военной службы ознакомлен(а)</label><br />
+        
+      <input type="submit" value="Подтвердить и сохранить" />
+    </form>
+
+    </form>
 </body>
 </html>
