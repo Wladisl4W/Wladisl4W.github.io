@@ -31,7 +31,14 @@ a:hover {
 
 #img-1 {
     width: 40vw;
+}
 
+#img-2 {
+    width: 40vw;
+}
+
+#img-3 {
+    width: 40vw;
 }
 
 
@@ -50,6 +57,14 @@ a:hover {
     }
 
     #img-1{
+        width: 240px;
+    }
+
+    #img-2{
+        width: 240px;
+    }
+
+    #img-3{
         width: 240px;
     }
 }
