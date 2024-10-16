@@ -51,7 +51,7 @@ function changeCost() {
             result.innerHTML = 2000 * Number(number.value) * Number(select.value); //jslint-ignore-line
         }
         if (radio.value === "gem") {
-            result.innerHTML = 0*number.value;
+            result.innerHTML = 0 * number.value;
             if (check !== null) {
                 check.forEach(function (check2) {
                     result.innerHTML = Number(result.innerHTML) + Number(check2.value) * number.value; //jslint-ignore-line
