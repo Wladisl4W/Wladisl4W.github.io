@@ -1,85 +1,88 @@
 $(document).ready(function() {
   
-    function isOpenModal() {
+  function isOpenModal() {
       return window.location.href.match(/#form/);
-    }
-    
-    function historyChange() {
+  }
+
+  function historyChange() {
       const elemModal = document.querySelector("#modalForm");
       const modal = bootstrap.Modal.getOrCreateInstance(elemModal);
       if (isOpenModal() == null) {
-        modal.hide();
+          modal.hide();
       } else {
-        modal.show();
+          modal.show();
       }
-    }
-  
-    let isPopup = false;
-  
-    function formAddURL() {
+  }
+
+  let isPopup = false;
+
+  function formAddURL() {
       let currentURL = {
-        modal: "true"
+          modal: "true"
       };
       window.history.pushState(currentURL, "", "#form");
-    }
-    
-    function formClearURL() {
+  }
+
+  function formClearURL() {
       window.history.back();
-    }
-    
-    function saveItem(event) {
+  }
+
+  function saveItem(event) {
       window.localStorage.setItem(event.target.name, event.target.value);
-    }
-    
-    $("#submitForm").click(function() {
+  }
+
+  function clearForm() {
+      $(".formcarryForm").find("input, textarea").val("");
+      $(".formcarryForm").find(".form-check-input").prop("checked", false);
       window.localStorage.clear();
-    });
-    
-    $(function(){
-      $(".formcarryForm").submit(function(e){
-        e.preventDefault();
-        var href = $(this).attr("action");
-        
-        $.ajax({
+  }
+
+  $("#submitForm").click(function() {
+      clearForm();
+  });
+
+  $(".formcarryForm").submit(function(e) {
+      e.preventDefault();
+      var href = $(this).attr("action");
+      
+      $.ajax({
           type: "POST",
           url: href,
           data: new FormData(this),
           dataType: "json",
           processData: false,
           contentType: false,
-          success: function(response){
-            if(response.status == "success"){
-              alert("Мы получили ваш ответ, спасибо!");
-            }
-            else if(response.code === 422){
-              alert("Что-то пошло не так!");
-              $.each(response.errors, function(key) {
-                $('[name="' + key + '"]').addClass('formcarry-field-error');
-              });
-            }
-            else{
-                alert("Произошла ошибка: " + response.message);
+          success: function(response) {
+              if (response.status === "success") {
+                  alert("Мы получили ваш ответ, спасибо!");
+                  clearForm();
+              } else if (response.code === 422) {
+                  alert("Что-то пошло не так!");
+                  $.each(response.errors, function(key) {
+                      $('[name="' + key + '"]').addClass('formcarry-field-error');
+                  });
+              } else {
+                  alert("Произошла ошибка: " + response.message);
               }
-            },
-            error: function(jqXHR, textStatus){
-              const errorObject = jqXHR.responseJSON
-              
+          },
+          error: function(jqXHR, textStatus) {
+              const errorObject = jqXHR.responseJSON;
               alert("Запрос не удался, " + errorObject.title + ": " + errorObject.message);
-            },
-            complete: function(){
-            }
-          });
-        });
-      }); 
-      document.getElementById("showFormBtn").addEventListener("click", formAddURL);
-      document.getElementById("showFormBtn").addEventListener("click", playSound);
-      document.getElementById("hideFormBtn").addEventListener("click", formClearURL);
-      document.querySelector("form").addEventListener("change", saveItem);
-      window.addEventListener("popstate", historyChange);
-      historyChange();
-      
-      Object.keys(window.localStorage).forEach(function (i) {
-        document.getElementsByName(i)[0].value = window.localStorage.getItem(i);
+          }
       });
-  
   });
+
+  document.getElementById("showFormBtn").addEventListener("click", formAddURL);
+  document.getElementById("hideFormBtn").addEventListener("click", formClearURL);
+  document.querySelector("form").addEventListener("change", saveItem);
+  window.addEventListener("popstate", historyChange);
+  historyChange();
+
+  Object.keys(window.localStorage).forEach(function(i) {
+      const inputElement = document.getElementsByName(i)[0];
+      if (inputElement) {
+          inputElement.value = window.localStorage.getItem(i);
+      }
+  });
+
+});
